@@ -1,0 +1,30 @@
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import ProfilePage from "./profile/ProfilePage";
+import Landing from "./landing/Landing";
+import NotFound from "./not-found/NotFound";
+import PhotoBook from "./photo-book/PhotoBook";
+
+export const useQuery = () => new URLSearchParams(useLocation().search);
+
+const RoutingWrapper = () => {
+    let query = useQuery();
+    return (
+        <Child name={query.get("page")} />
+    );
+};
+
+const Child: React.FC<{ name: string | null }> = ({ name }) => {
+    switch (name) {
+        case 'landing':
+            return <Landing />
+        case 'profile':
+            return <ProfilePage />
+        case 'kay':
+            return <PhotoBook />
+        default:
+            return <NotFound />
+    }
+}
+
+export default RoutingWrapper;

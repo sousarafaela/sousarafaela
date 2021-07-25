@@ -12,6 +12,7 @@ type ParallaxProps = {
     style?: string;
     image?: string;
     small?: boolean;
+    extraSmall?: boolean;
 }
 
 const Parallax: React.FC<ParallaxProps> = (props) => {
@@ -38,12 +39,13 @@ const Parallax: React.FC<ParallaxProps> = (props) => {
         var windowScrollTop = window.pageYOffset / 3;
         setTransform("translate3d(0," + windowScrollTop + "px,0)");
     };
-    const { filter, className, children, style, image, small } = props;
+    const { filter, className, children, style, image, small, extraSmall } = props;
     const classes = useStyles();
     const parallaxClasses = classNames({
         [classes.parallax]: true,
         [classes.filter]: filter,
         [classes.small]: small,
+        [classes.extraSmall]: extraSmall,
         "className": className !== undefined,
     });
 

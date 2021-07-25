@@ -38,7 +38,7 @@ const Footer: React.FC<FooterProps> = (props) => {
                             </a>
                         </ListItem>
                         <ListItem className={classes.inlineBlock}>
-                            <Link to="/profile" className={classes.block}>
+                            <Link to="/home?page=profile" className={classes.block}>
                                 About me
                             </Link>
                         </ListItem>

@@ -30,6 +30,9 @@ const parallaxStyle = {
     small: {
         height: "380px",
     },
+    extraSmall: {
+        height: "240px",
+    }
 };
 
 export default parallaxStyle;

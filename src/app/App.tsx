@@ -1,17 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, } from "react-router-dom";
-import Landing from "./landing/Landing";
-import ProfilePage from "./profile/ProfilePage";
+import { BrowserRouter as Router, Redirect, Route, Switch, } from "react-router-dom";
+import RoutingWrapper from "./RoutingWrapper";
 
 function App() {
     return (
         <Router>
             <Switch>
-                <Route path='/' exact>
-                    <Landing/>
+                <Route exact path="/">
+                    <Redirect to="/home?page=landing" />
                 </Route>
-                <Route path='/profile' exact>
-                    <ProfilePage/>
+                <Route exact path='/home'>
+                    <RoutingWrapper/>
                 </Route>
             </Switch>
         </Router>
