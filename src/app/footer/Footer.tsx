@@ -3,6 +3,7 @@ import footerStyle from "../../assets/tss/footer";
 import { List, ListItem, makeStyles } from "@material-ui/core";
 import { Favorite } from "@material-ui/icons";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 // @ts-ignore
 const useStyles = makeStyles(footerStyle);
@@ -37,20 +38,9 @@ const Footer: React.FC<FooterProps> = (props) => {
                             </a>
                         </ListItem>
                         <ListItem className={classes.inlineBlock}>
-                            <a
-                                href="/profile"
-                                className={classes.block}
-                            >
+                            <Link to="/profile" className={classes.block}>
                                 About me
-                            </a>
-                        </ListItem>
-                        <ListItem className={classes.inlineBlock}>
-                            <a
-                                href="/blog"
-                                className={classes.block}
-                            >
-                                Blog
-                            </a>
+                            </Link>
                         </ListItem>
                     </List>
                 </div>

@@ -8,18 +8,17 @@ import Parallax from "../molecules/Parallax";
 import GridContainer from "../grid/GridContainer";
 import rafaProfile from "../../assets/images/rafa-profile.png";
 import GridItem from "../grid/GridItem";
-import profileBg from "../../assets/images/profile-bg.jpg";
 import Footer from "../footer/Footer";
 import ReactGA from "react-ga";
 import Facebook from "../header/Facebook";
 import Insta from "../header/Insta";
 import Twitter from "../header/Twitter";
+import profileBg from "../../assets/images/profile-bg.jpg";
 
 // @ts-ignore
 const useStyles = makeStyles(profilePageStyle);
 
-type ProfilePageProps = {}
-const ProfilePage: React.FC<ProfilePageProps> = (props) => {
+const ProfilePage: React.FC = () => {
     ReactGA.pageview(window.location.pathname + window.location.search);
     const classes: any = useStyles();
     const imageClasses = classNames(
@@ -27,6 +26,7 @@ const ProfilePage: React.FC<ProfilePageProps> = (props) => {
         classes.imgRoundedCircle,
         classes.imgFluid
     );
+
     return (
         <div>
             <Header
