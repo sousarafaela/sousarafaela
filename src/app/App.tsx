@@ -1,21 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import '../assets/styles/coming-soon.css';
-import '../assets/styles/vendor.css';
-import Header from "./comingSoon/Header";
-import Intro from "./comingSoon/Intro";
-import Footer from "./comingSoon/Footer";
+import { BrowserRouter as Router, Route, Switch, } from "react-router-dom";
+import Landing from "./landing/Landing";
+import ProfilePage from "./profile/ProfilePage";
 
 function App() {
-  return (
-      <div className="ss-show">
-        <div className="s-pagewrap">
-          <Header />
-          <Intro />
-          <Footer />
-        </div>
-      </div>
-  );
+    return (
+        <Router>
+            <Switch>
+                <Route path='/' exact>
+                    <Landing/>
+                </Route>
+                <Route path='/profile' exact>
+                    <ProfilePage/>
+                </Route>
+            </Switch>
+        </Router>
+    )
 }
 
 export default App;
