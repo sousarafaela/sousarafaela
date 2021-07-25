@@ -12,6 +12,7 @@ import Parallax from "../molecules/Parallax";
 import profileBg from "../../assets/images/profile-bg.jpg";
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
+import Footer from "../footer/Footer";
 
 // @ts-ignore
 const useStyles = makeStyles(theme => ({
@@ -92,6 +93,7 @@ const PhotoBook = () => {
                     </ModalGateway>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };
