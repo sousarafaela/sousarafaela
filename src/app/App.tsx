@@ -6,12 +6,7 @@ function App() {
     return (
         <Router>
             <Switch>
-                <Route exact path="/">
-                    <Redirect to="/home?page=landing" />
-                </Route>
-                <Route exact path='/home'>
-                    <RoutingWrapper/>
-                </Route>
+                <RoutingWrapper/>
             </Switch>
         </Router>
     )

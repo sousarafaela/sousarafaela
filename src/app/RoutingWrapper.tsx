@@ -16,7 +16,7 @@ const RoutingWrapper = () => {
 
 const Child: React.FC<{ name: string | null }> = ({ name }) => {
     switch (name) {
-        case 'landing':
+        case null:
             return <Landing />
         case 'profile':
             return <ProfilePage />

@@ -26,7 +26,7 @@ const Album = () => {
                 </GridContainer>
                 <GridContainer justify="center">
                     <GridItem xs={12} sm={12} md={6}>
-                        <Link to="/home?page=kay" className={classes.link}>
+                        <Link to="/?page=kay" className={classes.link}>
                             <img
                                 src={kay}
                                 alt="..."
@@ -44,7 +44,7 @@ const Album = () => {
                         </Link>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={6}>
-                        <Link to="/home?page=kay" className={classes.link}>
+                        <Link to="/?page=kay" className={classes.link}>
                             <img
                                 src={kay}
                                 alt="..."

@@ -1,7 +1,6 @@
 import React from 'react';
 import footerStyle from "../../assets/tss/footer";
 import { List, ListItem, makeStyles } from "@material-ui/core";
-import { Favorite } from "@material-ui/icons";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 
@@ -19,10 +18,6 @@ const Footer: React.FC<FooterProps> = (props) => {
         [classes.footer]: true,
         [classes.footerWhiteFont]: whiteFont,
     });
-    const aClasses = classNames({
-        [classes.a]: true,
-        [classes.footerWhiteFont]: whiteFont,
-    });
     return (
         <footer className={footerClasses}>
             <div className={classes.container}>
@@ -38,7 +33,7 @@ const Footer: React.FC<FooterProps> = (props) => {
                             </a>
                         </ListItem>
                         <ListItem className={classes.inlineBlock}>
-                            <Link to="/home?page=profile" className={classes.block}>
+                            <Link to="/?page=profile" className={classes.block}>
                                 About me
                             </Link>
                         </ListItem>
