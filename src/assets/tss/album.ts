@@ -19,6 +19,7 @@ const albumStyle = {
     },
     container: {
         ...containerFluid,
+        maxWidth: "80%",
         textAlign: "center !important",
     },
     ...imagesStyles,

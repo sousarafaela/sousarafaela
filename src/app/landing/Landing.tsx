@@ -19,7 +19,7 @@ const Landing: React.FC = (props) => {
     ReactGA.pageview(window.location.pathname + window.location.search);
     const classes = useStyles();
     return (
-        <>
+        <div>
             <Header
                 color="transparent"
                 brand="Rafaela Sousa"
@@ -39,12 +39,10 @@ const Landing: React.FC = (props) => {
                 </div>
             </Parallax>
             <div className={classNames(classes.main, classes.mainRaised)}>
-                <div className={classes.container}>
-                    <Album/>
-                </div>
+                <Album/>
             </div>
             <Footer/>
-        </>
+        </div>
     );
 };
 

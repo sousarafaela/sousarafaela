@@ -14,17 +14,17 @@ const Album = () => {
     const classes: any = useStyles();
     return (
         <div className={classes.section}>
-            <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={8}>
-                    <h2 className={classes.title}>Lifestyle and Nature Photographer. Tallinn, Estonia</h2>
-                    <h5 className={classes.description}>
-                        I believe in finding connection, and am passionate about capturing these authentic, real moments
-                        for you to remember forever. Memories of your most treasured day together with those you love.
-                    </h5>
-                </GridItem>
-            </GridContainer>
-            <div>
-                <GridContainer>
+            <div className={classes.container}>
+                <GridContainer justify="center">
+                    <GridItem xs={12} sm={12} md={8}>
+                        <h2 className={classes.title}>Lifestyle and Nature Photographer. Tallinn, Estonia</h2>
+                        <h5 className={classes.description}>
+                            I believe in finding connection, and am passionate about capturing these authentic, real moments
+                            for you to remember forever. Memories of your most treasured day together with those you love.
+                        </h5>
+                    </GridItem>
+                </GridContainer>
+                <GridContainer justify="center">
                     <GridItem xs={12} sm={12} md={6}>
                         <Link to="/" className={classes.link}>
                             <img

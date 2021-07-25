@@ -2,7 +2,10 @@ import imagesStyles from "./images";
 import { container, title } from "./material-kit-react";
 
 const profilePageStyle = {
-    container,
+    container: {
+        ...container,
+        maxWidth: "80%",
+    },
     profile: {
         textAlign: "center",
         "& img": {

@@ -45,15 +45,7 @@ const Footer: React.FC<FooterProps> = (props) => {
                     </List>
                 </div>
                 <div className={classes.right}>
-                    &copy; {new Date().getFullYear()} , made with{" "}
-                    <Favorite className={classes.icon}/> by{" "}
-                    <a
-                        href="https://www.linkedin.com/in/joamit/"
-                        className={aClasses}
-                        target="_blank"
-                    >
-                        amjoshi
-                    </a>
+                    &copy; {new Date().getFullYear()}
                 </div>
             </div>
         </footer>
