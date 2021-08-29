@@ -1,0 +1,7 @@
+album:
+  name: Kay's Evening Photo Shoot
+  images:
+    - file: kay.jpeg
+      description: Kay Running
+    - file: kay2.jpeg
+      description: Kay Running 2
