@@ -28,6 +28,7 @@ const Footer: React.FC<FooterProps> = (props) => {
                                 href="https://www.linkedin.com/in/rafaela-de-sousa-0517bbaa/?originalSubdomain=ee"
                                 className={classes.block}
                                 target="_blank"
+                                rel="noreferrer"
                             >
                                 Rafaela Sousa
                             </a>

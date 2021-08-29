@@ -3,7 +3,6 @@ import albumStyle from "../../assets/tss/album";
 import { makeStyles } from "@material-ui/core";
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
-import kay from '../../assets/images/kay.jpeg'
 import { Link } from "react-router-dom";
 import Button from '../molecules/Button';
 import { Urls } from "../molecules/Constants";
@@ -51,9 +50,7 @@ const Album = () => {
                     })
             })
         }
-    }, [albums])
-
-    console.log('AlbumDetails', albumDetails);
+    }, [albums, albumDetails])
 
     const canRenderAlbums = Object.keys(albumDetails).length > 0;
 

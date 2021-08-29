@@ -27,10 +27,9 @@ type HeaderProps = {
     brand: string;
     rightLinks?: ReactElement;
 }
-const Header: React.FC<HeaderProps> = ({ changeColorOnScroll, color = "white", brand, rightLinks }) => {
+const Header: React.FC<HeaderProps> = ({ changeColorOnScroll, color = "white", rightLinks }) => {
     const classes = useStyles();
 
-    const [mobileOpen, setMobileOpen] = React.useState(false);
     const headerColorChange = () => {
         const windowsScrollTop = window.pageYOffset;
         if (windowsScrollTop > changeColorOnScroll.height) {
@@ -48,10 +47,6 @@ const Header: React.FC<HeaderProps> = ({ changeColorOnScroll, color = "white", b
                 .getElementsByTagName("header")[0]
                 .classList.remove(classes[changeColorOnScroll.color || "white"]);
         }
-    };
-
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
     };
 
     React.useEffect(() => {

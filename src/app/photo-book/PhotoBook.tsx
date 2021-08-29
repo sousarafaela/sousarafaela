@@ -42,6 +42,7 @@ const PhotoBook = () => {
 
     const [albumDetails, setAlbumDetails] = useState<AlbumDetails | undefined>();
     const [isLoadingAlbumDetails, setIsLoadingAlbumDetails] = useState<boolean>(false)
+
     const loadAlbumDetails = useCallback(async() => {
         try {
             await setIsLoadingAlbumDetails(true);
@@ -51,26 +52,21 @@ const PhotoBook = () => {
         } finally {
             await setIsLoadingAlbumDetails(false);
         }
-    }, [])
+    }, [album])
 
     useEffect(() => {
         if (album && album.trim().length > 0) {
             loadAlbumDetails();
         }
-    }, [album]);
+    }, [album, loadAlbumDetails]);
 
     // @ts-ignore
     const classes: any = useStyles();
-    const imageClasses = classNames(
-        classes.imgRaised,
-        classes.imgRoundedCircle,
-        classes.imgFluid
-    );
 
     const [currentImage, setCurrentImage] = useState(0);
     const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
-    const openLightbox = useCallback((event, { photo, index }) => {
+    const openLightbox = useCallback((event, { index }) => {
         setCurrentImage(index);
         setViewerIsOpen(true);
     }, []);
