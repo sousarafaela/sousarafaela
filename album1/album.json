@@ -1,12 +1,13 @@
 {
   "albumName": "Kay's Evening Photo Shoot",
+  "albumTitleImage": "kay.jpeg",
   "albumImages": [
     {
-      "file": "key.jpeg",
+      "file": "kay.jpeg",
       "description": "Kay Running"
     },
     {
-      "file": "key2.jpeg",
+      "file": "kay2.jpeg",
       "description": "Kay Running2"
     }
   ]
