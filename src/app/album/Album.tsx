@@ -43,24 +43,6 @@ const Album = () => {
                             </Button>
                         </Link>
                     </GridItem>
-                    <GridItem xs={12} sm={12} md={6}>
-                        <Link to="/?page=kay" className={classes.link}>
-                            <img
-                                src={kay}
-                                alt="..."
-                                className={
-                                    classes.imgRaised +
-                                    " " +
-                                    classes.imgRounded +
-                                    " " +
-                                    classes.imgFluid
-                                }
-                            />
-                            <Button color="primary" size="lg" simple>
-                                <>Kay's evening shoot</>
-                            </Button>
-                        </Link>
-                    </GridItem>
                 </GridContainer>
             </div>
         </div>

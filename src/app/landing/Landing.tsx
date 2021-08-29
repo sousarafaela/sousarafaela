@@ -3,7 +3,7 @@ import Header from "../header/Header";
 import Parallax from "../molecules/Parallax";
 import landingPageStyle from "../../assets/tss/landing-page";
 import { makeStyles } from "@material-ui/core";
-import bg from "../../assets/images/rafa-bg.png";
+import bg from "../../assets/images/rafa-bg-min.png";
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
 import classNames from "classnames";

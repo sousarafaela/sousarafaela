@@ -6,14 +6,13 @@ import HeaderLinks from "../header/HeaderLinks";
 import Header from "../header/Header";
 import Parallax from "../molecules/Parallax";
 import GridContainer from "../grid/GridContainer";
-import rafaProfile from "../../assets/images/rafa-profile.png";
+import rafaProfile from "../../assets/images/rafa-profile-min.png";
 import GridItem from "../grid/GridItem";
 import Footer from "../footer/Footer";
 import ReactGA from "react-ga";
 import Facebook from "../header/Facebook";
 import Insta from "../header/Insta";
 import Twitter from "../header/Twitter";
-import profileBg from "../../assets/images/profile-bg.jpg";
 
 // @ts-ignore
 const useStyles = makeStyles(profilePageStyle);
@@ -38,9 +37,8 @@ const ProfilePage: React.FC = () => {
                     color: "white",
                 }}/>
             <Parallax
-                small
+                extraSmall
                 filter
-                image={profileBg}
             />
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div>

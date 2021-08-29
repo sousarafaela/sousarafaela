@@ -3,7 +3,6 @@ import './not-found.css'
 import Header from "../header/Header";
 import HeaderLinks from "../header/HeaderLinks";
 import Parallax from "../molecules/Parallax";
-import profileBg from "../../assets/images/profile-bg.jpg";
 import classNames from "classnames";
 import GridItem from "../grid/GridItem";
 import GridContainer from "../grid/GridContainer";
@@ -94,7 +93,6 @@ const NotFound = () => {
             <Parallax
                 extraSmall
                 filter
-                image={profileBg}
             />
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div>

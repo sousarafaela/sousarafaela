@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { AppBar, Button, Hidden, makeStyles, Toolbar } from "@material-ui/core";
 import header from "../../assets/tss/header";
+import logo from "../../assets/images/logo.png";
 import classNames from "classnames";
 
 // @ts-ignore
@@ -71,7 +72,9 @@ const Header: React.FC<HeaderProps> = ({ changeColorOnScroll, color = "white", b
         [classes.fixed]: true,
     });
 
-    const brandComponent = <Button className={classes.title} href='/'>{brand}</Button>;
+    const brandComponent = <Button className={classes.title} href='/'>
+        <img alt='logo' src={logo} style={{ maxWidth: '160px', maxHeight: '160px'}} />
+    </Button>;
 
     return (
         <>

@@ -9,7 +9,6 @@ import classNames from "classnames";
 import Header from "../header/Header";
 import HeaderLinks from "../header/HeaderLinks";
 import Parallax from "../molecules/Parallax";
-import profileBg from "../../assets/images/profile-bg.jpg";
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
 import Footer from "../footer/Footer";
@@ -61,7 +60,7 @@ const PhotoBook = () => {
                     height: 400,
                     color: "white",
                 }}/>
-            <Parallax extraSmall filter image={profileBg}/>
+            <Parallax extraSmall filter />
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div>
                     <div className={classes.container}>
