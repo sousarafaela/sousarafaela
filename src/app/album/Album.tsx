@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import albumStyle from "../../assets/tss/album";
 import { makeStyles } from "@material-ui/core";
+import * as jsYaml from 'js-yaml';
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
 import kay from '../../assets/images/kay.jpeg'
@@ -11,6 +12,27 @@ import Button from '../molecules/Button';
 const useStyles = makeStyles(albumStyle);
 
 const Album = () => {
+    const [albums, setAlbums] = useState<string[]>([]);
+
+    useEffect(() => {
+        fetch('rafaelasousa.com/albums.json')
+            .then(async (data) => {
+                const content: string[] = await data.json()
+                console.log('content', content)
+                setAlbums(content)
+            })
+            .catch((e) => {
+                console.error('error', e)
+            })
+    }, [])
+
+    useEffect(() => {
+        albums.forEach((album) => {
+            const albumYaml = jsYaml.load(`rafaelasousa.com/${album}/album.yaml`)
+            console.log('album yaml', albumYaml)
+        })
+    }, [albums])
+
     const classes: any = useStyles();
     return (
         <div className={classes.section}>
