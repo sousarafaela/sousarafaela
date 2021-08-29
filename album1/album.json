@@ -4,7 +4,9 @@
   "albumImages": [
     {
       "file": "kay.jpeg",
-      "description": "Kay Running"
+      "description": "Kay Running",
+      "width": 4,
+      "height": 3
     },
     {
       "file": "kay2.jpeg",
