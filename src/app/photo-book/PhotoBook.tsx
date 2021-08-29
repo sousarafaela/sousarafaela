@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { makeStyles } from "@material-ui/core";
@@ -12,6 +12,9 @@ import Parallax from "../molecules/Parallax";
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
 import Footer from "../footer/Footer";
+import { useQuery } from "../RoutingWrapper";
+import { AlbumDetails } from "../album/Album";
+import { Urls } from "../molecules/Constants";
 
 // @ts-ignore
 const useStyles = makeStyles(theme => ({
@@ -29,6 +32,24 @@ const useStyles = makeStyles(theme => ({
 
 const PhotoBook = () => {
     ReactGA.pageview(window.location.pathname + window.location.search);
+
+    let query = useQuery();
+    const album = query.get("album");
+
+    const [albumDetails, setAlbumDetails] = useState<AlbumDetails | undefined>();
+
+    useEffect(() => {
+        if (album && album.trim().length > 0) {
+            fetch(`${Urls.home}/${album}/album.json`)
+                .then((res) => res.json())
+                .then((data: AlbumDetails) => {
+                    setAlbumDetails(data)
+                })
+        }
+    }, [album]);
+
+    console.log('album details', albumDetails);
+
     // @ts-ignore
     const classes: any = useStyles();
     const imageClasses = classNames(

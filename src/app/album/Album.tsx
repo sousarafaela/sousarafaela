@@ -6,15 +6,28 @@ import GridItem from "../grid/GridItem";
 import kay from '../../assets/images/kay.jpeg'
 import { Link } from "react-router-dom";
 import Button from '../molecules/Button';
+import { Urls } from "../molecules/Constants";
 
 // @ts-ignore
 const useStyles = makeStyles(albumStyle);
 
+export type AlbumImage = {
+    fileName: string;
+    description: string;
+}
+
+export type AlbumDetails = {
+    albumName: string;
+    albumTitleImage: string;
+    albumImages: AlbumImage[];
+}
+
 const Album = () => {
     const [albums, setAlbums] = useState<string[]>([]);
+    const [albumDetails, setAlbumDetails] = useState<Record<string, AlbumDetails>>({})
 
     useEffect(() => {
-        fetch('https://rafaelasousa.com/albums.json')
+        fetch(`${Urls.home}/albums.json`)
             .then(res => res.json())
             .then((data) => {
                 setAlbums(data.albums)
@@ -25,14 +38,21 @@ const Album = () => {
     }, [])
 
     useEffect(() => {
-        albums.forEach((album) => {
-            fetch(`rafaelasousa.com/${album}/album.yaml`)
-                .then((res) => res.json())
-                .then((albumDetails) => {
-                    console.log('album details', albumDetails)
-                })
-        })
+        if (albums.length > 0) {
+            albums.forEach((album) => {
+                fetch(`${Urls.home}/${album}/album.json`)
+                    .then((res) => res.json())
+                    .then((details: AlbumDetails) => {
+                        const mutableAlbumDetails = { ...albumDetails, [album]: details};
+                        setAlbumDetails(mutableAlbumDetails);
+                    })
+            })
+        }
     }, [albums])
+
+    console.log('AlbumDetails', albumDetails);
+
+    const canRenderAlbums = Object.keys(albumDetails).length > 0;
 
     const classes: any = useStyles();
     return (
@@ -47,26 +67,31 @@ const Album = () => {
                         </h5>
                     </GridItem>
                 </GridContainer>
-                <GridContainer justify="center">
-                    <GridItem xs={12} sm={12} md={6}>
-                        <Link to="/?page=kay" className={classes.link}>
-                            <img
-                                src={kay}
-                                alt="..."
-                                className={
-                                    classes.imgRaised +
-                                    " " +
-                                    classes.imgRounded +
-                                    " " +
-                                    classes.imgFluid
-                                }
-                            />
-                            <Button color="primary" size="lg" simple>
-                                <>Kay's evening shoot</>
-                            </Button>
-                        </Link>
-                    </GridItem>
-                </GridContainer>
+                {canRenderAlbums && Object.keys(albumDetails).map((album) => {
+                    const albumContent = albumDetails[album];
+                    return (
+                        <GridContainer justify="center">
+                            <GridItem xs={12} sm={12} md={6}>
+                                <Link to={`/?page=photoBook&album=${album}`} className={classes.link}>
+                                    <img
+                                        src={`${Urls.home}/${album}/${albumContent.albumTitleImage}`}
+                                        alt={albumContent.albumName}
+                                        className={
+                                            classes.imgRaised +
+                                            " " +
+                                            classes.imgRounded +
+                                            " " +
+                                            classes.imgFluid
+                                        }
+                                    />
+                                    <Button color="primary" size="lg" simple>
+                                        <>{albumContent.albumName}</>
+                                    </Button>
+                                </Link>
+                            </GridItem>
+                        </GridContainer>
+                    )
+                })}
             </div>
         </div>
     );

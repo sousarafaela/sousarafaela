@@ -20,7 +20,7 @@ const Child: React.FC<{ name: string | null }> = ({ name }) => {
             return <Landing />
         case 'profile':
             return <ProfilePage />
-        case 'kay':
+        case 'photoBook':
             return <PhotoBook />
         default:
             return <NotFound />
