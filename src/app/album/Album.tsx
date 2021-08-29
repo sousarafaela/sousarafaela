@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import albumStyle from "../../assets/tss/album";
 import { makeStyles } from "@material-ui/core";
-import * as jsYaml from 'js-yaml';
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
 import kay from '../../assets/images/kay.jpeg'
@@ -15,21 +14,23 @@ const Album = () => {
     const [albums, setAlbums] = useState<string[]>([]);
 
     useEffect(() => {
-        fetch('rafaelasousa.com/albums.json')
-            .then(async (data) => {
-                const content: { albums:  string[]} = await data.json()
-                console.log('content', content)
-                setAlbums(content.albums)
+        fetch('https://rafaelasousa.com/albums.json')
+            .then(res => res.json())
+            .then((data) => {
+                setAlbums(data.albums)
             })
             .catch((e) => {
-                console.error('error', e)
+                console.error('error loading albums', e)
             })
     }, [])
 
     useEffect(() => {
         albums.forEach((album) => {
-            const albumYaml = jsYaml.load(`rafaelasousa.com/${album}/album.yaml`)
-            console.log('album yaml', albumYaml)
+            fetch(`rafaelasousa.com/${album}/album.yaml`)
+                .then((res) => res.json())
+                .then((albumDetails) => {
+                    console.log('album details', albumDetails)
+                })
         })
     }, [albums])
 
