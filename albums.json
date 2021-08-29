@@ -1,3 +1,5 @@
-[
-  "album1"
-]
+{
+  "albums": [
+    "album1"
+  ]
+}
