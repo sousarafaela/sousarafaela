@@ -17,9 +17,9 @@ const Album = () => {
     useEffect(() => {
         fetch('rafaelasousa.com/albums.json')
             .then(async (data) => {
-                const content: string[] = await data.json()
+                const content: { albums:  string[]} = await data.json()
                 console.log('content', content)
-                setAlbums(content)
+                setAlbums(content.albums)
             })
             .catch((e) => {
                 console.error('error', e)
