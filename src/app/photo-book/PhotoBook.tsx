@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
-import { makeStyles } from "@material-ui/core";
-import { photos } from "./Photos";
+import { Backdrop, CircularProgress, makeStyles } from "@material-ui/core";
 import photoBookPageStyle from "../../assets/tss/photo-book";
 import ReactGA from "react-ga";
 import classNames from "classnames";
@@ -15,6 +14,7 @@ import Footer from "../footer/Footer";
 import { useQuery } from "../RoutingWrapper";
 import { AlbumDetails } from "../album/Album";
 import { Urls } from "../molecules/Constants";
+import { Sleep } from "../molecules/Sleep";
 
 // @ts-ignore
 const useStyles = makeStyles(theme => ({
@@ -28,6 +28,10 @@ const useStyles = makeStyles(theme => ({
     title: {
         flexGrow: 1,
     },
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+        color: '#fff',
+    },
 }));
 
 const PhotoBook = () => {
@@ -37,18 +41,23 @@ const PhotoBook = () => {
     const album = query.get("album");
 
     const [albumDetails, setAlbumDetails] = useState<AlbumDetails | undefined>();
+    const [isLoadingAlbumDetails, setIsLoadingAlbumDetails] = useState<boolean>(false)
+    const loadAlbumDetails = useCallback(async() => {
+        try {
+            await setIsLoadingAlbumDetails(true);
+            const data = await fetch(`${Urls.home}/${album}/album.json`)
+            await setAlbumDetails((await data.json()) as AlbumDetails)
+            await Sleep(1000);
+        } finally {
+            await setIsLoadingAlbumDetails(false);
+        }
+    }, [])
 
     useEffect(() => {
         if (album && album.trim().length > 0) {
-            fetch(`${Urls.home}/${album}/album.json`)
-                .then((res) => res.json())
-                .then((data: AlbumDetails) => {
-                    setAlbumDetails(data)
-                })
+            loadAlbumDetails();
         }
     }, [album]);
-
-    console.log('album details', albumDetails);
 
     // @ts-ignore
     const classes: any = useStyles();
@@ -73,6 +82,9 @@ const PhotoBook = () => {
 
     return (
         <div>
+            <Backdrop className={classes.backdrop} open={isLoadingAlbumDetails} onClick={() => setIsLoadingAlbumDetails(false)}>
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <Header
                 color="transparent"
                 brand="Rafaela Sousa"
@@ -82,37 +94,51 @@ const PhotoBook = () => {
                     color: "white",
                 }}/>
             <Parallax extraSmall filter />
-            <div className={classNames(classes.main, classes.mainRaised)}>
-                <div>
-                    <div className={classes.container}>
-                        <GridContainer justify="center">
-                            <GridItem xs={12} sm={12} md={6}>
-                                <div className={classes.profile}>
-                                    <h2 className={classes.title}>Kay's Day Out in Tallinn</h2>
-                                    <br/>
-                                </div>
-                            </GridItem>
-                        </GridContainer>
+            {albumDetails && (
+                <div className={classNames(classes.main, classes.mainRaised)}>
+                    <div>
+                        <div className={classes.container}>
+                            <GridContainer justify="center">
+                                <GridItem xs={12} sm={12} md={6}>
+                                    <div className={classes.profile}>
+                                        <h2 className={classes.title}>{albumDetails.albumName}</h2>
+                                        <br/>
+                                    </div>
+                                </GridItem>
+                            </GridContainer>
+                        </div>
+                    </div>
+                    <div>
+                        <Gallery photos={
+                            albumDetails.albumImages
+                                .map((albumImage) => ({
+                                    source: `${Urls.home}/${album}/${albumImage.file}`,
+                                    caption: albumImage.description,
+                                    alt: albumImage.alt || '',
+                                    width: albumImage.width || 4,
+                                    height: albumImage.height || 3
+                                }))
+                                .map((photo) => ({ ...photo, src: photo.source, }))} onClick={openLightbox}/>
+                        <ModalGateway>
+                            {viewerIsOpen ? (
+                                <Modal onClose={closeLightbox}>
+                                    <Carousel
+                                        currentIndex={currentImage}
+                                        views={albumDetails.albumImages
+                                            .map((albumImage) => ({
+                                                source: `${Urls.home}/${album}/${albumImage.file}`,
+                                                caption: albumImage.description,
+                                                alt: albumImage.alt || '',
+                                                width: albumImage.width || 4,
+                                                height: albumImage.height || 3
+                                            }))}
+                                    />
+                                </Modal>
+                            ) : null}
+                        </ModalGateway>
                     </div>
                 </div>
-                <div>
-                    <Gallery photos={photos.map((photo) => ({ ...photo, src: photo.source, }))} onClick={openLightbox}/>
-                    <ModalGateway>
-                        {viewerIsOpen ? (
-                            <Modal onClose={closeLightbox}>
-                                <Carousel
-                                    currentIndex={currentImage}
-                                    views={photos.map(x => ({
-                                        ...x,
-                                        source: x.source,
-                                        caption: x.caption
-                                    }))}
-                                />
-                            </Modal>
-                        ) : null}
-                    </ModalGateway>
-                </div>
-            </div>
+            )}
             <Footer />
         </div>
     );

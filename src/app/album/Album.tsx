@@ -12,8 +12,11 @@ import { Urls } from "../molecules/Constants";
 const useStyles = makeStyles(albumStyle);
 
 export type AlbumImage = {
-    fileName: string;
+    file: string;
     description: string;
+    alt?: string;
+    width?: number;
+    height?: number;
 }
 
 export type AlbumDetails = {
