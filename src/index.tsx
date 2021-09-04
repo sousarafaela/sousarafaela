@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
 import './index.css';
+import './react-slick.css';
 import App from './app/App';
 import reportWebVitals from './reportWebVitals';
 import sendToGoogleAnalytics from "./analytics";
