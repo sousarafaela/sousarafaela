@@ -5,6 +5,7 @@ const profilePageStyle = {
     container: {
         ...container,
         maxWidth: "80%",
+        minHeight: "800px",
     },
     profile: {
         textAlign: "center",

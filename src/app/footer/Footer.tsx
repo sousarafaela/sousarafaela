@@ -1,18 +1,21 @@
 import React from 'react';
-import footerStyle from "../../assets/tss/footer";
 import { List, ListItem, makeStyles } from "@material-ui/core";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import Tooltip from "@material-ui/core/Tooltip";
+import Facebook from "../header/Facebook";
+import Insta from "../header/Insta";
+import Twitter from "../header/Twitter";
+import footerLinksStyle from "../../assets/tss/footer-link";
 
 // @ts-ignore
-const useStyles = makeStyles(footerStyle);
+const useStyles = makeStyles((theme) => footerLinksStyle(theme));
 
 type FooterProps = {
     whiteFont?: boolean;
 }
 
 const Footer: React.FC<FooterProps> = (props) => {
-    const classes = useStyles();
+    const classes: any = useStyles();
     const { whiteFont } = props;
     const footerClasses = classNames({
         [classes.footer]: true,
@@ -23,25 +26,40 @@ const Footer: React.FC<FooterProps> = (props) => {
             <div className={classes.container}>
                 <div className={classes.left}>
                     <List className={classes.list}>
-                        <ListItem className={classes.inlineBlock}>
-                            <a
-                                href="https://www.linkedin.com/in/rafaela-de-sousa-0517bbaa/?originalSubdomain=ee"
-                                className={classes.block}
-                                target="_blank"
-                                rel="noreferrer"
+                        <ListItem className={classes.listItem}>
+                            <Tooltip
+                                id="facebook"
+                                title="Follow me on facebook"
+                                placement={window.innerWidth > 959 ? "top" : "left"}
+                                classes={{ tooltip: classes.tooltip }}
                             >
-                                Rafaela Sousa
-                            </a>
+                                <Facebook classes={classes}/>
+                            </Tooltip>
                         </ListItem>
-                        <ListItem className={classes.inlineBlock}>
-                            <Link to="/?page=profile" className={classes.block}>
-                                About me
-                            </Link>
+                        <ListItem className={classes.listItem}>
+                            <Tooltip
+                                id="instagram"
+                                title="Follow me on instagram"
+                                placement={window.innerWidth > 959 ? "top" : "left"}
+                                classes={{ tooltip: classes.tooltip }}
+                            >
+                                <Insta classes={classes}/>
+                            </Tooltip>
+                        </ListItem>
+                        <ListItem className={classes.listItem}>
+                            <Tooltip
+                                id="twitter"
+                                title="Follow me on twitter"
+                                placement={window.innerWidth > 959 ? "top" : "left"}
+                                classes={{ tooltip: classes.tooltip }}
+                            >
+                                <Twitter classes={classes}/>
+                            </Tooltip>
                         </ListItem>
                     </List>
                 </div>
                 <div className={classes.right}>
-                    &copy; {new Date().getFullYear()}
+                    Copyrights &copy; Rafaela Sousa {new Date().getFullYear()} | All rights Reserved
                 </div>
             </div>
         </footer>

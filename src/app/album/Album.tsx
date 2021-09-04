@@ -6,6 +6,7 @@ import GridItem from "../grid/GridItem";
 import { Link } from "react-router-dom";
 import Button from '../molecules/Button';
 import { Urls } from "../molecules/Constants";
+import ProgressiveImage from 'react-progressive-image';
 
 // @ts-ignore
 const useStyles = makeStyles(albumStyle);
@@ -45,7 +46,7 @@ const Album = () => {
                 fetch(`${Urls.home}/${album}/album.json`)
                     .then((res) => res.json())
                     .then((details: AlbumDetails) => {
-                        const mutableAlbumDetails = { ...albumDetails, [album]: details};
+                        const mutableAlbumDetails = { ...albumDetails, [album]: details };
                         setAlbumDetails(mutableAlbumDetails);
                     })
             })
@@ -59,38 +60,52 @@ const Album = () => {
         <div className={classes.container}>
             <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={8}>
-                    <h2 className={classes.title}>Lifestyle and Nature Photographer. Tallinn, Estonia</h2>
-                    <h5 className={classes.description}>
-                        I believe in finding connection, and am passionate about capturing these authentic, real moments
-                        for you to remember forever. Memories of your most treasured day together with those you love.
-                    </h5>
+                    <h2 className={classes.title}>Dog Lover, Lifestyle and Nature Photographer</h2>
+                    <h3 className={classes.description}>
+                        I grew up in Algarve, Portugal, have been traveling across Europe for work and taking pictures
+                        ever since childhood. I have a Bachelor’s degree from Instituto Universitário de Lisboa in
+                        Psychology. I am currently based in Tallinn, Estonia and available for assignments across
+                        Estonia and Baltics.
+                    </h3>
                 </GridItem>
             </GridContainer>
-            {canRenderAlbums && Object.keys(albumDetails).map((album) => {
-                const albumContent = albumDetails[album];
-                return (
-                    <GridContainer justify="center">
-                        <GridItem xs={12} sm={12} md={6}>
-                            <Link to={`/?page=photoBook&album=${album}`} className={classes.link}>
-                                <img
-                                    src={`${Urls.home}/${album}/${albumContent.albumTitleImage}`}
-                                    alt={albumContent.albumName}
-                                    className={
-                                        classes.imgRaised +
-                                        " " +
-                                        classes.imgRounded +
-                                        " " +
-                                        classes.imgFluid
-                                    }
-                                />
-                                <Button color="primary" size="lg" simple>
-                                    <>{albumContent.albumName}</>
-                                </Button>
-                            </Link>
-                        </GridItem>
-                    </GridContainer>
-                )
-            })}
+            <div className={classes.section}>
+                <div className={classes.container}>
+                    <h2 className={classes.title}>Featured Projects</h2>
+                    {canRenderAlbums && Object.keys(albumDetails).map((album) => {
+                        const albumContent = albumDetails[album];
+                        return (
+                            <GridContainer justify="center">
+                                <GridItem xs={12} sm={12} md={6}>
+                                    <Link to={`/?page=photoBook&album=${album}`} className={classes.link}>
+                                        <ProgressiveImage
+                                            src={`${Urls.home}/${album}/${albumContent.albumTitleImage}`}
+                                            placeholder={`${Urls.home}/loader.svg`}>
+                                            {(src: string, loading: boolean) => (
+                                                <img
+                                                    src={src}
+                                                    alt={albumContent.albumName}
+                                                    className={
+                                                        classes.imgRaised +
+                                                        " " +
+                                                        classes.imgRounded +
+                                                        " " +
+                                                        classes.imgFluid
+                                                    }
+                                                    style={{ opacity: loading ? 0.5 : 1 }}
+                                                />
+                                            )}
+                                        </ProgressiveImage>
+                                        <Button color="primary" size="lg" simple>
+                                            <>{albumContent.albumName}</>
+                                        </Button>
+                                    </Link>
+                                </GridItem>
+                            </GridContainer>
+                        )
+                    })}
+                </div>
+            </div>
         </div>
     );
 };

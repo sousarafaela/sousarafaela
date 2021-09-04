@@ -2,23 +2,26 @@ import { containerFluid } from "./material-kit-react";
 
 const carouselContainer = {
     ...containerFluid,
+    "@media (min-width: 300px)": {
+        maxWidth: "95%",
+    },
     "@media (min-width: 576px)": {
-        maxWidth: "90%",
+        maxWidth: "95%",
     },
     "@media (min-width: 768px)": {
-        maxWidth: "720px",
+        maxWidth: "95%",
     },
     "@media (min-width: 992px)": {
-        maxWidth: "960px",
+        maxWidth: "95%",
     },
     "@media (min-width: 1200px)": {
-        maxWidth: "90%",
+        maxWidth: "95%",
     },
 };
 
 const carouselStyle = {
     section: {
-        padding: "70px 0",
+        padding: "20px 0",
     },
     container: carouselContainer,
     marginAuto: {

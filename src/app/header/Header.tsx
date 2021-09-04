@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react';
-import { AppBar, Button, Hidden, makeStyles, Toolbar } from "@material-ui/core";
+import { AppBar, Button, Drawer, Hidden, IconButton, makeStyles, Toolbar } from "@material-ui/core";
 import header from "../../assets/tss/header";
 import logo from "../../assets/images/logo.png";
 import classNames from "classnames";
+import { Menu } from "@material-ui/icons";
 
 // @ts-ignore
 const useStyles = makeStyles(header);
@@ -26,9 +27,11 @@ type HeaderProps = {
     color?: Color;
     brand: string;
     rightLinks?: ReactElement;
+    leftLinks?: ReactElement;
 }
-const Header: React.FC<HeaderProps> = ({ changeColorOnScroll, color = "white", rightLinks }) => {
+const Header: React.FC<HeaderProps> = ({ changeColorOnScroll, color = "white", leftLinks, rightLinks }) => {
     const classes = useStyles();
+    const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const headerColorChange = () => {
         const windowsScrollTop = window.pageYOffset;
@@ -67,6 +70,10 @@ const Header: React.FC<HeaderProps> = ({ changeColorOnScroll, color = "white", r
         [classes.fixed]: true,
     });
 
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
+
     const brandComponent = <Button className={classes.title} href='/'>
         <img alt='logo' src={logo} style={{ maxWidth: '160px', maxHeight: '160px'}} />
     </Button>;
@@ -75,11 +82,45 @@ const Header: React.FC<HeaderProps> = ({ changeColorOnScroll, color = "white", r
         <>
             <AppBar className={appBarClasses}>
                 <Toolbar className={classes.container}>
-                    {brandComponent}
+                    {leftLinks !== undefined ? brandComponent : null}
+                    <div className={classes.flex}>
+                        {leftLinks !== undefined ? (
+                            <Hidden smDown implementation="css">
+                                {leftLinks}
+                            </Hidden>
+                        ) : (
+                            brandComponent
+                        )}
+                    </div>
                     <Hidden smDown implementation="css">
                         {rightLinks}
                     </Hidden>
+                    <Hidden mdUp>
+                        <IconButton
+                            color="default"
+                            aria-label="open drawer"
+                            onClick={handleDrawerToggle}
+                        >
+                            <Menu />
+                        </IconButton>
+                    </Hidden>
                 </Toolbar>
+                <Hidden mdUp implementation="js">
+                    <Drawer
+                        variant="temporary"
+                        anchor={"right"}
+                        open={mobileOpen}
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                        onClose={handleDrawerToggle}
+                    >
+                        <div className={classes.appResponsive}>
+                            {leftLinks}
+                            {rightLinks}
+                        </div>
+                    </Drawer>
+                </Hidden>
             </AppBar>
         </>
     );

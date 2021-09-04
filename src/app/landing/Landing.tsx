@@ -13,7 +13,7 @@ import Parallax from "../molecules/Parallax";
 // @ts-ignore
 const useStyles = makeStyles(landingPageStyle);
 
-const Landing: React.FC = (props) => {
+const Landing: React.FC = () => {
     ReactGA.pageview(window.location.pathname + window.location.search);
     const classes = useStyles();
     return (
@@ -23,7 +23,7 @@ const Landing: React.FC = (props) => {
                 brand="Rafaela Sousa"
                 rightLinks={<HeaderLinks/>}
                 changeColorOnScroll={{
-                    height: 400,
+                    height: 180,
                     color: "white",
                 }}/>
             <Parallax

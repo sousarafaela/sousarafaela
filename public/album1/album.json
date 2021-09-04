@@ -1,16 +1,36 @@
 {
-  "albumName": "Kay's Evening Photo Shoot",
+  "albumName": "Kay in Tallinn",
   "albumTitleImage": "kay.jpeg",
   "albumImages": [
     {
-      "file": "kay.jpeg",
-      "description": "Kay Running",
+      "file": "DSC00728-min.jpg",
+      "description": "Kay",
       "width": 4,
       "height": 3
     },
     {
-      "file": "kay2.jpeg",
-      "description": "Kay Running2"
+      "file": "DSC00746-min.jpg",
+      "description": "Kay"
+    },
+    {
+      "file": "DSC00750-min.jpg",
+      "description": "Kay"
+    },
+    {
+      "file": "DSC00773-min.jpg",
+      "description": "Kay"
+    },
+    {
+      "file": "DSC00786-min.jpg",
+      "description": "Kay"
+    },
+    {
+      "file": "DSC00809-min.jpg",
+      "description": "Kay"
+    },
+    {
+      "file": "DSC00842-min.jpg",
+      "description": "Kay"
     }
   ]
 }
