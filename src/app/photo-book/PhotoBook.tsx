@@ -14,7 +14,6 @@ import Footer from "../footer/Footer";
 import { useQuery } from "../RoutingWrapper";
 import { AlbumDetails } from "../album/Album";
 import { Urls } from "../molecules/Constants";
-import { Sleep } from "../molecules/Sleep";
 
 // @ts-ignore
 const useStyles = makeStyles(theme => ({

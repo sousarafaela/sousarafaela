@@ -4,12 +4,11 @@ import { makeStyles } from "@material-ui/core";
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
 import { Link } from "react-router-dom";
-import Button from '../molecules/Button';
 import { Urls } from "../molecules/Constants";
 import ProgressiveImage from 'react-progressive-image';
 
 // @ts-ignore
-const useStyles = makeStyles(albumStyle);
+const useStyles = makeStyles((theme) => albumStyle(theme));
 
 export type AlbumImage = {
     file: string;
@@ -80,27 +79,29 @@ const Album = () => {
                             <GridContainer justify="center">
                                 <GridItem xs={12} sm={12} md={6}>
                                     <Link to={`/?page=photoBook&album=${album}`} className={classes.link}>
-                                        <ProgressiveImage
-                                            src={`${Urls.home}/${album}/${albumContent.albumTitleImage}`}
-                                            placeholder={`${Urls.home}/loader.svg`}>
-                                            {(src: string, loading: boolean) => (
-                                                <img
-                                                    src={src}
-                                                    alt={albumContent.albumName}
-                                                    className={
-                                                        classes.imgRaised +
-                                                        " " +
-                                                        classes.imgRounded +
-                                                        " " +
-                                                        classes.imgFluid
-                                                    }
-                                                    style={{ opacity: loading ? 0.5 : 1 }}
-                                                />
-                                            )}
-                                        </ProgressiveImage>
-                                        <Button color="primary" size="lg" simple>
-                                            <>{albumContent.albumName}</>
-                                        </Button>
+                                        <div className={classes.progressiveImage}>
+                                            <ProgressiveImage
+                                                src={`${Urls.home}/${album}/${albumContent.albumTitleImage}`}
+                                                placeholder={`${Urls.home}/loader.svg`}>
+                                                {(src: string, loading: boolean) => (
+                                                    <img
+                                                        src={src}
+                                                        alt={albumContent.albumName}
+                                                        className={
+                                                            classes.imgRaised +
+                                                            " " +
+                                                            classes.imgRounded +
+                                                            " " +
+                                                            classes.imgFluid
+                                                        }
+                                                        style={{ opacity: loading ? 0.5 : 1 }}
+                                                    />
+                                                )}
+                                            </ProgressiveImage>
+                                        </div>
+                                        <div className={classes.progressiveImageCaption}>
+                                            {albumContent.albumName}
+                                        </div>
                                     </Link>
                                 </GridItem>
                             </GridContainer>
