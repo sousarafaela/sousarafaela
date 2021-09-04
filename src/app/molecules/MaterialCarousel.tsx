@@ -43,7 +43,7 @@ const MaterialCarousel = () => {
 
     useEffect(() => {
         loadCarouselDetails();
-    }, []);
+    }, [loadCarouselDetails]);
 
     const classes = useStyles();
     const settings = {
