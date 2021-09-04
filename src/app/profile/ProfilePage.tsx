@@ -33,7 +33,7 @@ const ProfilePage: React.FC = () => {
                 brand="Rafaela Sousa"
                 rightLinks={<HeaderLinks/>}
                 changeColorOnScroll={{
-                    height: 400,
+                    height: 180,
                     color: "white",
                 }}/>
             <Parallax

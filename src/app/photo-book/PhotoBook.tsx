@@ -48,7 +48,6 @@ const PhotoBook = () => {
             await setIsLoadingAlbumDetails(true);
             const data = await fetch(`${Urls.home}/${album}/album.json`)
             await setAlbumDetails((await data.json()) as AlbumDetails)
-            await Sleep(1000);
         } finally {
             await setIsLoadingAlbumDetails(false);
         }
@@ -86,7 +85,7 @@ const PhotoBook = () => {
                 brand="Rafaela Sousa"
                 rightLinks={<HeaderLinks/>}
                 changeColorOnScroll={{
-                    height: 400,
+                    height: 180,
                     color: "white",
                 }}/>
             <Parallax extraSmall filter />
