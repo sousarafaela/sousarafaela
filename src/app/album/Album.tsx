@@ -43,12 +43,14 @@ const Album = () => {
     useEffect(() => {
         if (albums.length > 0) {
             albums.forEach((album) => {
-                fetch(`${Urls.home}/${album}/album.json`)
-                    .then((res) => res.json())
-                    .then((details: AlbumDetails) => {
-                        const mutableAlbumDetails = { ...albumDetails, [album]: details };
-                        setAlbumDetails(mutableAlbumDetails);
-                    })
+                if (!albumDetails[album]) {
+                    fetch(`${Urls.home}/${album}/album.json`)
+                        .then((res) => res.json())
+                        .then((details: AlbumDetails) => {
+                            const mutableAlbumDetails = { ...albumDetails, [album]: details };
+                            setAlbumDetails(mutableAlbumDetails);
+                        })
+                }
             })
         }
     }, [albums, albumDetails])
