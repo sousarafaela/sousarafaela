@@ -13,13 +13,17 @@ const footerLinksStyle = (theme: any) => ({
         display: "block",
     },
     left: {
-        float: "left!important",
+        float: "left !important",
         display: "block",
     },
     right: {
         padding: "15px 0",
         margin: "0",
-        float: "right!important",
+        float: "right !important",
+        [theme.breakpoints.down("sm")]: {
+            float: "left !important",
+            marginLeft: "15px",
+        }
     },
     footer: {
         padding: "0.9375rem 0",
@@ -68,17 +72,6 @@ const footerLinksStyle = (theme: any) => ({
         width: "auto",
         margin: "0",
         padding: "0",
-        [theme.breakpoints.down("sm")]: {
-            width: "100%",
-            "&:after": {
-                width: "calc(100% - 30px)",
-                content: '""',
-                display: "block",
-                height: "1px",
-                marginLeft: "15px",
-                backgroundColor: "#e5e5e5",
-            },
-        },
     },
     listItemText: {
         padding: "0 !important",

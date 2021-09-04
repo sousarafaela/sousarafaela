@@ -10,27 +10,39 @@
     },
     {
       "file": "DSC00746-min.jpg",
-      "description": "Kay"
+      "description": "Kay",
+      "width": 1,
+      "height": 1
     },
     {
       "file": "DSC00750-min.jpg",
-      "description": "Kay"
+      "description": "Kay",
+      "width": 3,
+      "height": 4
     },
     {
       "file": "DSC00773-min.jpg",
-      "description": "Kay"
+      "description": "Kay",
+      "width": 3,
+      "height": 4
     },
     {
       "file": "DSC00786-min.jpg",
-      "description": "Kay"
+      "description": "Kay",
+      "width": 3,
+      "height": 4
     },
     {
       "file": "DSC00809-min.jpg",
-      "description": "Kay"
+      "description": "Kay",
+      "width": 4,
+      "height": 3
     },
     {
       "file": "DSC00842-min.jpg",
-      "description": "Kay"
+      "description": "Kay",
+      "width": 1,
+      "height": 1
     }
   ]
 }
