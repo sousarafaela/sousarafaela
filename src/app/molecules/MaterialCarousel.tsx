@@ -19,22 +19,16 @@ type CarouselDetails = {
 }
 
 const MaterialCarousel = () => {
-    const [isLoadingCarouselDetails, setIsLoadingCarouselDetails] = useState(false);
     const [carouselDetails, setCarouselDetails] = useState<CarouselDetails | undefined>()
 
     const loadCarouselDetails = useCallback(async() => {
-        try {
-            await setIsLoadingCarouselDetails(true);
-            const data = await fetch(`${Urls.home}/carousel.json`)
-            await setCarouselDetails((await data.json()) as CarouselDetails)
-        } finally {
-            await setIsLoadingCarouselDetails(false);
-        }
+        const data = await fetch(`${Urls.home}/carousel.json`)
+        await setCarouselDetails((await data.json()) as CarouselDetails)
     }, [])
 
     useEffect(() => {
         loadCarouselDetails();
-    }, []);
+    }, [loadCarouselDetails]);
 
     const classes = useStyles();
     const settings = {
