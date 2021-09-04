@@ -56,43 +56,41 @@ const Album = () => {
 
     const classes: any = useStyles();
     return (
-        <div className={classes.section}>
-            <div className={classes.container}>
-                <GridContainer justify="center">
-                    <GridItem xs={12} sm={12} md={8}>
-                        <h2 className={classes.title}>Lifestyle and Nature Photographer. Tallinn, Estonia</h2>
-                        <h5 className={classes.description}>
-                            I believe in finding connection, and am passionate about capturing these authentic, real moments
-                            for you to remember forever. Memories of your most treasured day together with those you love.
-                        </h5>
-                    </GridItem>
-                </GridContainer>
-                {canRenderAlbums && Object.keys(albumDetails).map((album) => {
-                    const albumContent = albumDetails[album];
-                    return (
-                        <GridContainer justify="center">
-                            <GridItem xs={12} sm={12} md={6}>
-                                <Link to={`/?page=photoBook&album=${album}`} className={classes.link}>
-                                    <img
-                                        src={`${Urls.home}/${album}/${albumContent.albumTitleImage}`}
-                                        alt={albumContent.albumName}
-                                        className={
-                                            classes.imgRaised +
-                                            " " +
-                                            classes.imgRounded +
-                                            " " +
-                                            classes.imgFluid
-                                        }
-                                    />
-                                    <Button color="primary" size="lg" simple>
-                                        <>{albumContent.albumName}</>
-                                    </Button>
-                                </Link>
-                            </GridItem>
-                        </GridContainer>
-                    )
-                })}
-            </div>
+        <div className={classes.container}>
+            <GridContainer justify="center">
+                <GridItem xs={12} sm={12} md={8}>
+                    <h2 className={classes.title}>Lifestyle and Nature Photographer. Tallinn, Estonia</h2>
+                    <h5 className={classes.description}>
+                        I believe in finding connection, and am passionate about capturing these authentic, real moments
+                        for you to remember forever. Memories of your most treasured day together with those you love.
+                    </h5>
+                </GridItem>
+            </GridContainer>
+            {canRenderAlbums && Object.keys(albumDetails).map((album) => {
+                const albumContent = albumDetails[album];
+                return (
+                    <GridContainer justify="center">
+                        <GridItem xs={12} sm={12} md={6}>
+                            <Link to={`/?page=photoBook&album=${album}`} className={classes.link}>
+                                <img
+                                    src={`${Urls.home}/${album}/${albumContent.albumTitleImage}`}
+                                    alt={albumContent.albumName}
+                                    className={
+                                        classes.imgRaised +
+                                        " " +
+                                        classes.imgRounded +
+                                        " " +
+                                        classes.imgFluid
+                                    }
+                                />
+                                <Button color="primary" size="lg" simple>
+                                    <>{albumContent.albumName}</>
+                                </Button>
+                            </Link>
+                        </GridItem>
+                    </GridContainer>
+                )
+            })}
         </div>
     );
 };

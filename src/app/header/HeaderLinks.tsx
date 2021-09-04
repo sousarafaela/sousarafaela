@@ -12,14 +12,14 @@ import Facebook from "./Facebook";
 const useStyles = makeStyles((theme) => headerLinksStyle(theme));
 
 
-const HeaderLinks: React.FC = (props) => {
+const HeaderLinks: React.FC = () => {
     const classes: any = useStyles();
 
     return (
         <List className={classes.list}>
             <ListItem className={classes.listItem}>
                 <Tooltip
-                    id="instagram-facebook"
+                    id="facebook"
                     title="Follow me on facebook"
                     placement={window.innerWidth > 959 ? "top" : "left"}
                     classes={{ tooltip: classes.tooltip }}
@@ -29,7 +29,7 @@ const HeaderLinks: React.FC = (props) => {
             </ListItem>
             <ListItem className={classes.listItem}>
                 <Tooltip
-                    id="instagram-tooltip"
+                    id="instagram"
                     title="Follow me on instagram"
                     placement={window.innerWidth > 959 ? "top" : "left"}
                     classes={{ tooltip: classes.tooltip }}
@@ -39,7 +39,7 @@ const HeaderLinks: React.FC = (props) => {
             </ListItem>
             <ListItem className={classes.listItem}>
                 <Tooltip
-                    id="instagram-twitter"
+                    id="twitter"
                     title="Follow me on twitter"
                     placement={window.innerWidth > 959 ? "top" : "left"}
                     classes={{ tooltip: classes.tooltip }}

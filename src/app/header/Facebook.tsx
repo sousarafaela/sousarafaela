@@ -9,14 +9,14 @@ const Facebook: React.FC<{ classes: any }> = ({ classes }) => {
             href="https://www.facebook.com/"
             target="_blank"
             className={classes.navLink}
-            onClick={(e) => {
+            onClick={() => {
                 ReactGA.event({
                     category: 'Social Links',
                     action: 'Clicked Facebook'
                 });
             }}
         >
-            <i className={classes.socialIcons + " fab fa-facebook"}/>
+            <i className={classes.socialIcons + " fab fa-facebook"} style={{ color: '#3b5998'}}/>
         </Button>
     );
 };

@@ -9,14 +9,14 @@ const Twitter: React.FC<{ classes: any }> = ({ classes }) => {
             target="_blank"
             color="transparent"
             className={classes.navLink}
-            onClick={(e) => {
+            onClick={() => {
                 ReactGA.event({
                     category: 'Social Links',
                     action: 'Clicked Twitter'
                 });
             }}
         >
-            <i className={classes.socialIcons + " fab fa-twitter"}/>
+            <i className={classes.socialIcons + " fab fa-twitter"} style={{ color: '#00aced'}}/>
         </Button>
     );
 };
