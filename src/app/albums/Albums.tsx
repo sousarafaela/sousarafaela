@@ -38,7 +38,7 @@ const Albums: React.FC<AlbumsProps> = ({ featured }) => {
             .then(res => res.json())
             .then((data) => setAlbums(data.albums))
             .catch((e) => console.error('error loading albums', e))
-    }, [])
+    }, [featured])
 
     useEffect(() => {
         if (albums.length > 0) {
