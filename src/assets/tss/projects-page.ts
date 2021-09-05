@@ -1,13 +1,13 @@
 import { container, title } from "./material-kit-react";
 
-const landingPageStyle = {
+const projectsPageStyle = {
     container: {
         zIndex: "12",
         color: "#FFFFFF",
         ...container,
     },
     section: {
-        padding: "70px 0",
+        padding: "20px 0",
         textAlign: "center",
     },
     title: {
@@ -18,18 +18,6 @@ const landingPageStyle = {
         minHeight: "32px",
         color: "#FFFFFF",
         textDecoration: "none",
-    },
-    subTitle: {
-        ...title,
-        marginBottom: "1rem",
-        marginTop: "30px",
-        minHeight: "32px",
-        textDecoration: "none",
-        textAlign: "center"
-    },
-    description: {
-        color: "#999",
-        textAlign: "center"
     },
     subtitle: {
         fontSize: "1.313rem",
@@ -49,4 +37,4 @@ const landingPageStyle = {
     },
 };
 
-export default landingPageStyle;
+export default projectsPageStyle;

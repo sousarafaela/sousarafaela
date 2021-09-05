@@ -12,7 +12,7 @@ import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
 import Footer from "../footer/Footer";
 import { useQuery } from "../RoutingWrapper";
-import { AlbumDetails } from "../album/Album";
+import { AlbumDetails } from "../albums/Albums";
 import { Urls } from "../molecules/Constants";
 
 // @ts-ignore
