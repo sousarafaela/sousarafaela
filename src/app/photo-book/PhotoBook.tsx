@@ -103,33 +103,35 @@ const PhotoBook = () => {
                         </div>
                     </div>
                     <div>
-                        <Gallery photos={
-                            albumDetails.albumImages
-                                .map((albumImage) => ({
-                                    source: `${Urls.home}/${album}/${albumImage.file}`,
-                                    caption: albumImage.description,
-                                    alt: albumImage.alt || '',
-                                    width: albumImage.width || 4,
-                                    height: albumImage.height || 3
-                                }))
-                                .map((photo) => ({ ...photo, src: photo.source, }))} onClick={openLightbox}/>
-                        <ModalGateway>
-                            {viewerIsOpen ? (
-                                <Modal onClose={closeLightbox}>
-                                    <Carousel
-                                        currentIndex={currentImage}
-                                        views={albumDetails.albumImages
-                                            .map((albumImage) => ({
-                                                source: `${Urls.home}/${album}/${albumImage.file}`,
-                                                caption: albumImage.description,
-                                                alt: albumImage.alt || '',
-                                                width: albumImage.width || 4,
-                                                height: albumImage.height || 3
-                                            }))}
-                                    />
-                                </Modal>
-                            ) : null}
-                        </ModalGateway>
+                        <div className={classes.container}>
+                            <Gallery photos={
+                                albumDetails.albumImages
+                                    .map((albumImage) => ({
+                                        source: `${Urls.home}/${album}/${albumImage.file}`,
+                                        caption: albumImage.description,
+                                        alt: albumImage.alt || '',
+                                        width: albumImage.width || 4,
+                                        height: albumImage.height || 3
+                                    }))
+                                    .map((photo) => ({ ...photo, src: photo.source, }))} onClick={openLightbox}/>
+                            <ModalGateway>
+                                {viewerIsOpen ? (
+                                    <Modal onClose={closeLightbox}>
+                                        <Carousel
+                                            currentIndex={currentImage}
+                                            views={albumDetails.albumImages
+                                                .map((albumImage) => ({
+                                                    source: `${Urls.home}/${album}/${albumImage.file}`,
+                                                    caption: albumImage.description,
+                                                    alt: albumImage.alt || '',
+                                                    width: albumImage.width || 4,
+                                                    height: albumImage.height || 3
+                                                }))}
+                                        />
+                                    </Modal>
+                                ) : null}
+                            </ModalGateway>
+                        </div>
                     </div>
                 </div>
             )}
