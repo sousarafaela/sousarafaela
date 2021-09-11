@@ -5,6 +5,7 @@ import Landing from "./landing/Landing";
 import NotFound from "./not-found/NotFound";
 import PhotoBook from "./photo-book/PhotoBook";
 import Projects from "./projects/Projects";
+import Services from "./services/Services";
 
 export const useQuery = () => new URLSearchParams(useLocation().search);
 
@@ -23,6 +24,8 @@ const Child: React.FC<{ name: string | null }> = ({ name }) => {
             return <ProfilePage />
         case 'projects':
             return <Projects />
+        case 'services':
+            return <Services />
         case 'photoBook':
             return <PhotoBook />
         default:

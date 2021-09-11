@@ -16,7 +16,7 @@ type InfoAreaProps = {
 
 const InfoArea: React.FC<InfoAreaProps> = (props) => {
     const classes = useStyles();
-    const { title, description, iconColor, vertical } = props;
+    const { title, iconColor, description, vertical } = props;
     const iconWrapper = classNames({
         [classes.iconWrapper]: true,
         [classes[iconColor]]: true,
