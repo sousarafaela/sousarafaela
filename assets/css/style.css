@@ -5007,8 +5007,8 @@ body.nav-active .dsn-nav-bar .icon-m .menu-icon__line {
     position: absolute;
     width: 100%;
     font-family: "Montserrat", sans-serif;
-    font-size: 10vw;
-    font-weight: 600;
+    font-size: 8vw;
+    font-weight: 800;
     text-align: center;
     opacity: 0;
     -webkit-transform: translateY(-100%);
