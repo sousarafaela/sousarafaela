@@ -3292,7 +3292,7 @@ body.hamburger-menu .header-top {
 }
 
 .header-top .header-container .logo img {
-    width: 80px;
+    width: 120px;
 }
 
 .header-top .header-container .menu-icon {
@@ -3875,7 +3875,7 @@ body.nav-active .header-top .header-container .menu-icon:hover .text-menu .text-
 
 .nav .inner .logo img,
 .nav-content .inner .logo img {
-    width: 80px;
+    width: 120px;
     height: 50px;
 }
 
